@@ -1,14 +1,9 @@
 import React from 'react';
+// import {createStore, applyMiddleware} from 'redux';
 
 class BookData extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    
-    getData() {
-        var url = `https://api.nytimes.com/svc/books/v3`;
-
-    }
 
 
 }
+
+export default BookData
