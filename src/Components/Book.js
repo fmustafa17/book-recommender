@@ -37,6 +37,8 @@ class Book extends React.Component {
   
     render() {
       const { error, isLoaded, items } = this.state;
+      let random = Math.random();
+      let num_results = items.length;
       if (error) {
         return <div>Error: {error.message}</div>;
       } 
@@ -51,7 +53,7 @@ class Book extends React.Component {
                 <li key={item.title}>
                   {item.title} {item.author}
                   {item.description}
-                  <img src={item.book_image} alt="Book cover"/>
+                  <img src={item.book_image} alt="Book cover" height="350" width="250"/>
                   <a href={item.amazon_product_url}>Amazon URL</a> 
                 </li>
               ))}
