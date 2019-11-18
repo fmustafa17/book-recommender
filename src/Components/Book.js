@@ -11,7 +11,7 @@ class Book extends React.Component {
     }
   
     // URL = 'https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key='
-    URL = 'https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&api-key='
+    URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key='
     mykey = config.MY_KEY;
     componentDidMount() {
         fetch(this.URL + this.mykey)
