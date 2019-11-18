@@ -20,7 +20,7 @@ class Book extends React.Component {
           (result) => {
             this.setState({
               isLoaded: true,
-              items: result.results
+              items: result.results.books
             });
           },
           // Note: it's important to handle errors here
@@ -48,9 +48,10 @@ class Book extends React.Component {
           <div>
             <ul>
               {items.map(item => (
-                <li key={item.book_title}>
-                  {item.book_details[0].title} {item.book_details[0].author}
-                  {item.book_details[0].description}
+                <li key={item.title}>
+                  {item.title} {item.author}
+                  {item.description}
+                  <img src={item.book_image} alt="Book cover"/>
                   <a href={item.amazon_product_url}>Amazon URL</a> 
                 </li>
               ))}
