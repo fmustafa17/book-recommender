@@ -6,11 +6,15 @@ class Book extends React.Component {
       this.state = {
         error: null,
         isLoaded: false,
-        items: []
+        items: [],
+        rank: 0,
+        title: "",
+        author: "",
+        book_image: "",
+        amazon_product_url: ""
       };
     }
   
-    // URL = 'https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key='
     URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key='
     mykey = config.MY_KEY;
     componentDidMount() {
@@ -34,30 +38,34 @@ class Book extends React.Component {
           }
         )
     }
+
+    handleGetRandomRank = (e) => {
+      this.setState({
+        rank: Math.floor(Math.random() * 15) + 1
+      })
+    };
   
     render() {
-      const { error, isLoaded, items } = this.state;
-      let random = Math.random();
-      let num_results = items.length;
+      // const { error, isLoaded, items } = this.state;
+      let { error, isLoaded, items, rank } = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
       } 
       else if (!isLoaded) {
         return <div>Loading...</div>;
-      } 
+      }
+      //if user is first landing on the page, only display button 
+      else if (!rank) {
+        return <button className="" onClick={this.handleGetRandomRank}>Give me a Best Seller</button>
+      }
       else {
         return (
           <div>
-            <ul>
-              {items.map(item => (
-                <li key={item.title}>
-                  {item.title} {item.author}
-                  {item.description}
-                  <img src={item.book_image} alt="Book cover" height="350" width="250"/>
-                  <a href={item.amazon_product_url}>Amazon URL</a> 
-                </li>
-              ))}
-            </ul>
+            <button className="" onClick={this.handleGetRandomRank}>Give me a Best Seller</button>
+            <img src={items[rank].book_image} alt="Book cover" height="350" width="250"/>
+            {items[rank].title} {items[rank].author}
+            {items[rank].description}
+            <a href={items[rank].amazon_product_url}>Amazon URL</a> 
           </div>
         );
       }
