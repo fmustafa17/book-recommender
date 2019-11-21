@@ -1,6 +1,9 @@
 # Book Recommender by farhana
+## React web app using the NYTimes Book API to recommend the user a random best selling book based on the current date.
 
-## **Don't** have your sensitive data exposed!
+~README Under Construction~
+
+### **Don't** have your sensitive data exposed!
 Good practice is to have senstive data (passwords, API keys, etc) in a config file and adding the config file to the .gitignore file. If you do accidently add sensitive data to your repo, consider it compromised and generate a new API key.
 
 Make a config.js file  
