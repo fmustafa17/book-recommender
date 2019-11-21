@@ -1,5 +1,8 @@
 import React from 'react';
 import config from '../config';
+
+import './Book.css'
+
 class Book extends React.Component {
     constructor(props) {
       super(props);
@@ -60,11 +63,22 @@ class Book extends React.Component {
       }
       else {
         return (
-          <div>
-            <button className="" onClick={this.handleGetRandomRank}>Give me a Best Seller</button>
-            <img src={items[rank].book_image} alt="Book cover" height="350" width="250"/>
-            {items[rank].title} {items[rank].author}
-            {items[rank].description}
+          <div className="content">
+            <div>
+              <button className="" onClick={this.handleGetRandomRank}>Give me a Best Seller</button>
+            </div>
+            <div className="bookCoverStyling">
+              <img src={items[rank].book_image} alt="Book cover"/>
+            </div>
+            <div className="titleStyling">
+              {items[rank].title}
+            </div>
+            <div className="authorStyling">
+              by: {items[rank].author}
+            </div>
+            <div className="descriptionStyling">
+              {items[rank].description}
+            </div>
             <a href={items[rank].amazon_product_url}>Amazon URL</a> 
           </div>
         );
