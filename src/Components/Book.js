@@ -18,10 +18,14 @@ class Book extends React.Component {
       };
     }
   
-    URL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key='
+    hardcoverFictionURL = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=';
     mykey = config.MY_KEY;
+
+    combinedPrintAndEbookNonfictionURL = 'https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=';
+    combinedPrintAndEbookFictionURL = 'https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=';
+
     componentDidMount() {
-        fetch(this.URL + this.mykey)
+        fetch(this.hardcoverFictionURL + this.mykey)
         .then(res => res.json())
         .then(
           (result) => {
@@ -49,10 +53,10 @@ class Book extends React.Component {
     };
   
     render() {
-      // const { error, isLoaded, items } = this.state;
       let { error, isLoaded, items, rank } = this.state;
-      if (error) {
-        return <div>Error: {error.message}</div>;
+      if (error || !items[rank]) {
+        return <button className="" onClick={this.handleGetRandomRank}>Give me a Best Seller</button>
+
       } 
       else if (!isLoaded) {
         return <div>Loading...</div>;
